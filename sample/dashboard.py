@@ -257,7 +257,7 @@ def get_positive_tweets(phase_number, aggregate_function):
     twitter_accounts = [tool['twitter'].split('/')[-1] for tool in tools if tool['twitter'].startswith('https')]
     tweets = []
     for account in twitter_accounts:
-        tw = Tweets.objects.filter(topic__contains=account, sentiment='POSITIVE').values('topic').annotate(count=aggregate_function)
+        tw = Tweets.objects.filter(topic__contains=account, sentiment_bert='POSITIVE').values('topic').annotate(count=aggregate_function)
         for t in tw:
             tweets.append({'topic': t['topic'], 'count': t['count']})
     return tweets
@@ -288,7 +288,7 @@ def most_positive_service(request):
             raise Http404
     else:
         tweets = Tweets.objects.values('topic').annotate(count=aggregate_function)
-        positive_tweets = Tweets.objects.filter(sentiment='POSITIVE').values('topic').annotate(count=aggregate_function)
+        positive_tweets = Tweets.objects.filter(sentiment_bert='POSITIVE').values('topic').annotate(count=aggregate_function)
     stats = {}
     for tweet in tweets:
         if tweet['count'] > 100:

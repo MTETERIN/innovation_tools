@@ -39,7 +39,8 @@ class Tweets(models.Model):
     retweeted = models.BooleanField()
     sentiment = models.CharField(max_length=12, default='UNKNOWN')
     score = models.FloatField(default=0.0)
-
+    sentiment_bert = models.CharField(max_length=12, default='UNKNOWN')
+    score_bert = models.FloatField(default=0.0)
 
 class ToolsAndInnovations(models.Model):
     name = models.CharField(max_length=30, help_text="name (blue ones were added during last update)")
