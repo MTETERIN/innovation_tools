@@ -1,6 +1,5 @@
 # innovation_tools
 
-It's the only repository I can show.
 
 This service is implemented with django-material and allows you to perform semantic tweet analysis using the BERT model, do CRUD stuff with data and build dashboards for services with different kind of input parameters.
 The model is trained on 1600,000 tweets and shows an accuracy near 93%. and allows you to predict the types of tweets: neutral, negative and positive.
